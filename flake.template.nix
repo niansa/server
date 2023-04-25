@@ -25,20 +25,34 @@
 			installPhase = ''
 				runHook preInstall
 				set -x
-				mkdir -p $out
-				cp -r dist/ $out/
+				#remove packages not needed for production, or at least try to...
 				npm prune --omit dev --no-save $npmInstallFlags "''${npmInstallFlagsArray[@]}" $npmFlags "''${npmFlagsArray[@]}"
-			        find node_modules -maxdepth 1 -type d -empty -delete
-				cp -r node_modules/ $out/
-				mkdir -p $out/node_modules/@fosscord
-				for i in $out/dist/**/start.js
+			  find node_modules -maxdepth 1 -type d -empty -delete
+
+				mkdir -p $out/node_modules/
+				cp -r node_modules/* $out/node_modules/
+				cp -r dist/ $out/node_modules/@spacebar
+				for i in dist/**/start.js
 				do
-					makeWrapper ${pkgs.nodejs-slim}/bin/node $out/bin/start-`dirname ''${i/$out\/dist\//}` --prefix NODE_PATH : $out/node_modules --chdir $out --add-flags $out/`dirname ''${i/$out\//}`/start.js
-					#ln -s $out/dist/`dirname ''${i/$out\/dist\//}` $out/node_modules/@fosscord/`dirname ''${i/$out\/dist\//}`
+					makeWrapper ${pkgs.nodejs-slim}/bin/node $out/bin/start-`dirname ''${i/dist\//}` --prefix NODE_PATH : $out/node_modules --add-flags $out/node_modules/@spacebar`dirname ''${i/dist/}`/start.js
 				done
-				cp -r dist/* $out/node_modules/@fosscord/
+				set +x
+				substituteInPlace package.json --replace 'dist/' 'node_modules/@spacebar/'
+				find $out/node_modules/@spacebar/ -type f -name "*.js" | while read srcFile; do
+					echo Patching imports in ''${srcFile/$out\/node_modules\/@spacebar//}...
+					substituteInPlace $srcFile --replace 'require("./' 'require(__dirname + "/'
+					substituteInPlace $srcFile --replace 'require("../' 'require(__dirname + "/../'
+					substituteInPlace $srcFile --replace ', "assets"' ', "..", "assets"'
+					#substituteInPlace $srcFile --replace 'require("@spacebar/' 'require("
+				done
+				set -x
 				cp -r assets/ $out/
 				cp package.json $out/
+				rm -v $out/assets/openapi.json
+				#rm -v $out/assets/schemas.json
+
+				#debug utils:
+				#cp $out/node_modules/@spacebar/ $out/build_output -r
 				set +x
 				runHook postInstall
 			'';
