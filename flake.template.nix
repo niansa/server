@@ -6,7 +6,7 @@
   inputs.nixpkgs.url = "github:lilyinstarlight/nixpkgs/unheck/nodejs";
 
   outputs = { self, nixpkgs, flake-utils }:
-    flake-utils.lib.eachDefaultSystem (system:
+    flake-utils.lib.eachSystem flake-utils.lib.allSystems (system:
 	let
 		pkgs = import nixpkgs {
 			inherit system;
