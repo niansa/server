@@ -22,7 +22,7 @@ import Connection from "./Connection";
 import { ConnectionConfig } from "./ConnectionConfig";
 import { ConnectionStore } from "./ConnectionStore";
 
-const root = "dist/connections";
+const root = path.join(__dirname, "..", "..", "connections");
 const connectionsLoaded = false;
 
 export class ConnectionLoader {
