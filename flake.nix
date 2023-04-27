@@ -14,6 +14,7 @@
 	in rec {
 		packages.default = pkgs.buildNpmPackage {
 			pname = "spacebar-server-ts";
+			meta.mainProgram = "bin/start-bundle";
 			src = ./.;
 			name = "spacebar-server-ts";
 			nativeBuildInputs = with pkgs; [ python3 ];
