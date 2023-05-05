@@ -149,7 +149,7 @@ router.get(
 					if ((y.user_ids || []).includes(req.user_id)) y.me = true;
 					delete y.user_ids;
 				});
-				const {pomeloEnabled} = Config.get().general;
+				const { pomeloEnabled } = Config.get().general;
 				if (!x.author)
 					x.author = User.create({
 						id: "4",
