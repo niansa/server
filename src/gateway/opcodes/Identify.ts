@@ -215,6 +215,8 @@ export async function onIdentify(this: WebSocket, data: Payload) {
 		const public_related_user = {
 			username: related_user.username,
 			discriminator: related_user.discriminator,
+			global_name: related_user.global_name,
+			display_name: related_user.display_name,
 			id: related_user.id,
 			public_flags: related_user.public_flags,
 			avatar: related_user.avatar,
@@ -272,6 +274,8 @@ export async function onIdentify(this: WebSocket, data: Payload) {
 		premium_usage_flags: user.premium_usage_flags,
 		purchased_flags: user.purchased_flags,
 		username: user.username,
+		global_name: user.global_name,
+		display_name: user.display_name,
 		verified: user.verified,
 		bot: user.bot,
 		accent_color: user.accent_color,

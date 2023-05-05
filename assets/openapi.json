@@ -1351,6 +1351,12 @@
                     "username": {
                         "type": "string"
                     },
+                    "global_name": {
+                        "type": "string"
+                    },
+                    "display_name": {
+                        "type": "string"
+                    },
                     "discriminator": {
                         "type": "string"
                     },
@@ -1516,6 +1522,9 @@
                             "$ref": "#/components/schemas/SecurityKey"
                         }
                     },
+                    "handle": {
+                        "type": "string"
+                    },
                     "id": {
                         "type": "string"
                     }
@@ -1533,6 +1542,8 @@
                     "extended_settings",
                     "fingerprints",
                     "flags",
+                    "global_name",
+                    "handle",
                     "id",
                     "mfa_enabled",
                     "mobile",
@@ -3469,6 +3480,12 @@
                     "username": {
                         "type": "string"
                     },
+                    "global_name": {
+                        "type": "string"
+                    },
+                    "display_name": {
+                        "type": "string"
+                    },
                     "discriminator": {
                         "type": "string"
                     },
@@ -3507,6 +3524,7 @@
                     "bio",
                     "bot",
                     "discriminator",
+                    "global_name",
                     "id",
                     "premium_since",
                     "premium_type",
@@ -3925,25 +3943,32 @@
             "MinimalPublicUserDTO": {
                 "type": "object",
                 "properties": {
-                    "avatar": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "discriminator": {
+                    "id": {
                         "type": "string"
                     },
-                    "id": {
+                    "username": {
+                        "type": "string"
+                    },
+                    "global_name": {
+                        "type": "string"
+                    },
+                    "display_name": {
+                        "type": "string"
+                    },
+                    "discriminator": {
                         "type": "string"
                     },
                     "public_flags": {
                         "type": "integer"
                     },
-                    "username": {
-                        "type": "string"
+                    "avatar": {
+                        "type": "string",
+                        "nullable": true
                     }
                 },
                 "required": [
                     "discriminator",
+                    "global_name",
                     "id",
                     "public_flags",
                     "username"
@@ -6311,6 +6336,15 @@
                             "discriminator": {
                                 "type": "string"
                             },
+                            "global_name": {
+                                "type": "string"
+                            },
+                            "display_name": {
+                                "type": [
+                                    "null",
+                                    "string"
+                                ]
+                            },
                             "id": {
                                 "type": "string"
                             },
@@ -6328,6 +6362,8 @@
                         "required": [
                             "avatar",
                             "discriminator",
+                            "display_name",
+                            "global_name",
                             "id",
                             "public_flags",
                             "username"
@@ -6571,6 +6607,15 @@
                                 "username": {
                                     "type": "string"
                                 },
+                                "global_name": {
+                                    "type": "string"
+                                },
+                                "display_name": {
+                                    "type": [
+                                        "null",
+                                        "string"
+                                    ]
+                                },
                                 "discriminator": {
                                     "type": "string"
                                 },
@@ -6592,6 +6637,8 @@
                                 "avatar",
                                 "avatar_url",
                                 "discriminator",
+                                "display_name",
+                                "global_name",
                                 "id",
                                 "status",
                                 "username"
@@ -6947,6 +6994,12 @@
                     "username": {
                         "type": "string"
                     },
+                    "global_name": {
+                        "type": "string"
+                    },
+                    "display_name": {
+                        "type": "string"
+                    },
                     "discriminator": {
                         "type": "string"
                     },
@@ -7014,6 +7067,7 @@
                     "disabled",
                     "discriminator",
                     "flags",
+                    "global_name",
                     "id",
                     "mfa_enabled",
                     "nsfw_allowed",
@@ -7064,6 +7118,12 @@
                     "username": {
                         "type": "string"
                     },
+                    "global_name": {
+                        "type": "string"
+                    },
+                    "display_name": {
+                        "type": "string"
+                    },
                     "discriminator": {
                         "type": "string"
                     },
@@ -7131,6 +7191,7 @@
                     "disabled",
                     "discriminator",
                     "flags",
+                    "global_name",
                     "id",
                     "mfa_enabled",
                     "nsfw_allowed",
@@ -7229,6 +7290,10 @@
                     "autoCreateBotUsers": {
                         "type": "boolean",
                         "default": false
+                    },
+                    "pomeloEnabled": {
+                        "type": "boolean",
+                        "default": false
                     }
                 },
                 "required": [
@@ -7240,6 +7305,7 @@
                     "instanceDescription",
                     "instanceId",
                     "instanceName",
+                    "pomeloEnabled",
                     "tosPage"
                 ]
             },
@@ -7811,6 +7877,12 @@
                         "username": {
                             "type": "string"
                         },
+                        "global_name": {
+                            "type": "string"
+                        },
+                        "display_name": {
+                            "type": "string"
+                        },
                         "discriminator": {
                             "type": "string"
                         },
@@ -7823,6 +7895,7 @@
                     },
                     "required": [
                         "discriminator",
+                        "global_name",
                         "id",
                         "public_flags",
                         "username"

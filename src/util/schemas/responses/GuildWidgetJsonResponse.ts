@@ -12,6 +12,8 @@ export interface GuildWidgetJsonResponse {
 	members: {
 		id: string;
 		username: string;
+		global_name: string;
+		display_name: string | null;
 		discriminator: string;
 		avatar: string | null;
 		status: ClientStatus;
