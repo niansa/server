@@ -1354,9 +1354,6 @@
                     "global_name": {
                         "type": "string"
                     },
-                    "display_name": {
-                        "type": "string"
-                    },
                     "discriminator": {
                         "type": "string"
                     },
@@ -1522,7 +1519,7 @@
                             "$ref": "#/components/schemas/SecurityKey"
                         }
                     },
-                    "handle": {
+                    "tag": {
                         "type": "string"
                     },
                     "id": {
@@ -1542,8 +1539,6 @@
                     "extended_settings",
                     "fingerprints",
                     "flags",
-                    "global_name",
-                    "handle",
                     "id",
                     "mfa_enabled",
                     "mobile",
@@ -1560,6 +1555,7 @@
                     "sessions",
                     "settings",
                     "system",
+                    "tag",
                     "username",
                     "verified",
                     "webauthn_enabled"
@@ -3483,9 +3479,6 @@
                     "global_name": {
                         "type": "string"
                     },
-                    "display_name": {
-                        "type": "string"
-                    },
                     "discriminator": {
                         "type": "string"
                     },
@@ -3524,7 +3517,6 @@
                     "bio",
                     "bot",
                     "discriminator",
-                    "global_name",
                     "id",
                     "premium_since",
                     "premium_type",
@@ -3950,10 +3942,9 @@
                         "type": "string"
                     },
                     "global_name": {
-                        "type": "string"
-                    },
-                    "display_name": {
-                        "type": "string"
+                        "type": "string",
+                        "default": null,
+                        "nullable": true
                     },
                     "discriminator": {
                         "type": "string"
@@ -6339,12 +6330,6 @@
                             "global_name": {
                                 "type": "string"
                             },
-                            "display_name": {
-                                "type": [
-                                    "null",
-                                    "string"
-                                ]
-                            },
                             "id": {
                                 "type": "string"
                             },
@@ -6362,8 +6347,6 @@
                         "required": [
                             "avatar",
                             "discriminator",
-                            "display_name",
-                            "global_name",
                             "id",
                             "public_flags",
                             "username"
@@ -6608,9 +6591,6 @@
                                     "type": "string"
                                 },
                                 "global_name": {
-                                    "type": "string"
-                                },
-                                "display_name": {
                                     "type": [
                                         "null",
                                         "string"
@@ -6637,7 +6617,6 @@
                                 "avatar",
                                 "avatar_url",
                                 "discriminator",
-                                "display_name",
                                 "global_name",
                                 "id",
                                 "status",
@@ -6997,9 +6976,6 @@
                     "global_name": {
                         "type": "string"
                     },
-                    "display_name": {
-                        "type": "string"
-                    },
                     "discriminator": {
                         "type": "string"
                     },
@@ -7067,7 +7043,6 @@
                     "disabled",
                     "discriminator",
                     "flags",
-                    "global_name",
                     "id",
                     "mfa_enabled",
                     "nsfw_allowed",
@@ -7121,9 +7096,6 @@
                     "global_name": {
                         "type": "string"
                     },
-                    "display_name": {
-                        "type": "string"
-                    },
                     "discriminator": {
                         "type": "string"
                     },
@@ -7191,7 +7163,6 @@
                     "disabled",
                     "discriminator",
                     "flags",
-                    "global_name",
                     "id",
                     "mfa_enabled",
                     "nsfw_allowed",
@@ -7880,9 +7851,6 @@
                         "global_name": {
                             "type": "string"
                         },
-                        "display_name": {
-                            "type": "string"
-                        },
                         "discriminator": {
                             "type": "string"
                         },
@@ -7895,7 +7863,6 @@
                     },
                     "required": [
                         "discriminator",
-                        "global_name",
                         "id",
                         "public_flags",
                         "username"
