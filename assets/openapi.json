@@ -1354,6 +1354,9 @@
                     "global_name": {
                         "type": "string"
                     },
+                    "legacy_username": {
+                        "type": "string"
+                    },
                     "discriminator": {
                         "type": "string"
                     },
@@ -3477,6 +3480,9 @@
                         "type": "string"
                     },
                     "global_name": {
+                        "type": "string"
+                    },
+                    "legacy_username": {
                         "type": "string"
                     },
                     "discriminator": {
@@ -6976,6 +6982,9 @@
                     "global_name": {
                         "type": "string"
                     },
+                    "legacy_username": {
+                        "type": "string"
+                    },
                     "discriminator": {
                         "type": "string"
                     },
@@ -7094,6 +7103,9 @@
                         "type": "string"
                     },
                     "global_name": {
+                        "type": "string"
+                    },
+                    "legacy_username": {
                         "type": "string"
                     },
                     "discriminator": {
