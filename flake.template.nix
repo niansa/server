@@ -1,9 +1,8 @@
 {
   description = "Spacebar server, written in Typescript.";
 
-  #inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
+  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   inputs.flake-utils.url = "github:numtide/flake-utils";
-  inputs.nixpkgs.url = "github:lilyinstarlight/nixpkgs/unheck/nodejs";
 
   outputs = { self, nixpkgs, flake-utils }:
     flake-utils.lib.eachSystem flake-utils.lib.allSystems (system:
