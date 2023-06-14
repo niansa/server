@@ -45,7 +45,6 @@ import { UserSettings } from "./UserSettings";
 export enum PublicUserEnum {
 	username,
 	global_name,
-	legacy_username,
 	discriminator,
 	id,
 	public_flags,
@@ -260,7 +259,7 @@ export class User extends BaseClass {
 				});
 		}
 
-		if (this.discriminator) {
+		if (this.discriminator && this.discriminator !== "0") {
 			const discrim = Number(this.discriminator);
 			if (
 				isNaN(discrim) ||
@@ -344,9 +343,8 @@ export class User extends BaseClass {
 	public get tag(): string {
 		const { uniqueUsernames } = Config.get().general;
 
-		// if uniqueUsernames is enabled, global_name should be set
 		return uniqueUsernames
-			? (this.global_name as string)
+			? this.username
 			: `${this.username}#${this.discriminator}`;
 	}
 
@@ -397,7 +395,7 @@ export class User extends BaseClass {
 		});
 
 		const user = User.create({
-			username: username,
+			username: uniqueUsernames ? username.toLowerCase() : username,
 			discriminator,
 			id: id || Snowflake.generate(),
 			email: email,
@@ -407,7 +405,6 @@ export class User extends BaseClass {
 			},
 			extended_settings: "{}",
 			settings: settings,
-
 			premium_since: Config.get().defaults.user.premium
 				? new Date()
 				: undefined,
